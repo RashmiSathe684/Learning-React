@@ -14,6 +14,8 @@ function App() {
   console.log(array4)
 
 
+
+
   //person object
   let person={id:1,name:'Rashmi'}
   console.log(person)
@@ -60,6 +62,14 @@ function App() {
   }
 ];
 
+employees.push({
+  id: 6,
+  name: "Neha",
+  role: "HR",
+  salary: 35000
+});
+
+
 console.log(employees);
 
 
@@ -69,10 +79,39 @@ for(let emp of employees)
   console.log(emp)
 }
 
+//sort with salary
+employees.sort((a, b) => a.salary - b.salary);
+console.log(employees);
 
 //Using Map function
-let empData=employees.map((e) => e)
-console.log(empData)
+// let empData=employees.map((e) => e)
+// console.log(empData)
+
+
+
+  //add value to existing array
+  let array5=[1,...array1,4]
+console.log(array5)
+
+
+
+//print the name of emp with id=1
+let emp = employees.find(e => e.id === 1);
+console.log(emp);
+
+//display using foreach
+employees.forEach(emp => {
+  console.log(emp.name, emp.role);
+});
+
+
+
+let updated = employees.map(emp => ({
+  ...emp,
+  salary:5000
+}));
+
+console.log(updated)
 
   return (
     <>
@@ -94,10 +133,12 @@ console.log(empData)
         <tbody>
 
         {
+          
           employees.map((e) => (
+            
           <tr key={e.id}>
             <td>{e.id}</td>
-            <td>{e.name}</td>
+            <td>{e.name.toUpperCase()}</td>
             <td>{e.role}</td>
             <td>{e.salary}</td>
           </tr>
